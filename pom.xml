@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.7.18</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <properties>
+
+        <java.version>17</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- ????? -->
+        <spring-cloud.version>2021.0.3</spring-cloud.version>
+        <spring-cloud-alibaba.version>2021.0.1.0</spring-cloud-alibaba.version>
+        <alibaba.nacos.version>2.0.4</alibaba.nacos.version>
+        <seata.version>1.5.2</seata.version>
+        <xxl-job-core.version>2.4.1</xxl-job-core.version>
+        <fastjson.version>1.2.83</fastjson.version>
+        <aviator.version>5.2.6</aviator.version>
+        <pegdown.version>1.6.0</pegdown.version>
+        <commonmark.version>0.17.0</commonmark.version>
+        <!-- ????????? -->
+        <postgresql.version>42.2.25</postgresql.version>
+        <ojdbc6.version>11.2.0.3</ojdbc6.version>
+        <sqljdbc4.version>4.0</sqljdbc4.version>
+        <mysql-connector-java.version>8.0.27</mysql-connector-java.version>
+        <hutool.version>5.8.25</hutool.version>
+        <!-- ????????????? -->
+        <!-- ????? -->
+        <mybatis-plus.version>3.5.3.2</mybatis-plus.version>
+        <dynamic-datasource-spring-boot-starter.version>4.1.3</dynamic-datasource-spring-boot-starter.version>
+        <druid.version>1.2.22</druid.version>
+        <!-- ???????-->
+        <jimureport-spring-boot-starter.version>1.9.1</jimureport-spring-boot-starter.version>
+        <commons-io.version>2.11.0</commons-io.version>
+        <commons.version>2.6</commons.version>
+        <aliyun-java-sdk-dysmsapi.version>2.1.0</aliyun-java-sdk-dysmsapi.version>
+        <aliyun.oss.version>3.11.2</aliyun.oss.version>
+        <!-- shiro -->
+        <shiro.version>1.12.0</shiro.version>
+        <java-jwt.version>3.11.0</java-jwt.version>
+        <shiro-redis.version>3.2.2</shiro-redis.version>
+        <codegenerate.version>1.4.9</codegenerate.version>
+        <autopoi-web.version>1.4.11</autopoi-web.version>
+        <minio.version>8.0.3</minio.version>
+        <justauth-spring-boot-starter.version>1.4.0</justauth-spring-boot-starter.version>
+        <dom4j.version>1.6.1</dom4j.version>
+        <qiniu-java-sdk.version>7.4.0</qiniu-java-sdk.version>
+        <baidu-java-sdk.version>4.16.19</baidu-java-sdk.version>
+
+    </properties>
+    <groupId>com.example</groupId>
+    <artifactId>rec-mahout-demo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>rec-mahout-demo</name>
+    <description>rec-mahout-demo</description>
+    <url/>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!-- mybatis-plus -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatis-plus.version}</version>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba</groupId>-->
+<!--            <artifactId>druid-spring-boot-starter</artifactId>-->
+<!--            <version>${druid.version}</version>-->
+<!--        </dependency>-->
+        <!-- 动态数据源 -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+            <version>${dynamic-datasource-spring-boot-starter.version}</version>
+        </dependency>
+        <!-- 数据库驱动 -->
+        <!--mysql-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <!-- json -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.3</version>
+        </dependency>
+
+        <!-- hutool??????-->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-core</artifactId>
+            <version>${hutool.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-crypto</artifactId>
+            <version>${hutool.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.mahout</groupId>
+            <artifactId>mahout-core</artifactId>
+            <version>0.9</version>
+        </dependency>
+
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
