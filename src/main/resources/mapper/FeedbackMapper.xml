@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.rec.mapper.FeedbackMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.rec.domain.Feedback">
+            <id property="feedbackType" column="feedback_type" jdbcType="VARCHAR"/>
+            <id property="userId" column="user_id" jdbcType="VARCHAR"/>
+            <id property="itemId" column="item_id" jdbcType="VARCHAR"/>
+            <result property="timeStamp" column="time_stamp" jdbcType="TIMESTAMP"/>
+            <result property="comment" column="comment" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        feedback_type,user_id,item_id,
+        time_stamp,comment
+    </sql>
+
+    <select id="getUserItemRatings" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT
+        user_id,
+        item_id,
+        SUM (
+        CASE
+        WHEN feedback_type = 'click' THEN
+        1
+        WHEN feedback_type = 'view' THEN
+        2
+        WHEN feedback_type = 'cart' THEN
+        3
+        WHEN feedback_type = 'buy' THEN
+        5
+        ELSE
+        0
+        END
+        ) AS rating
+        FROM
+        feedback
+        <where>
+            <if test="day != null and day != ''">
+                time_stamp >= NOW() - INTERVAL '30 days'
+            </if>
+        </where>
+        GROUP BY
+        user_id,
+        item_id
+        ORDER BY
+        user_id,
+        rating DESC
+    </select>
+
+</mapper>
